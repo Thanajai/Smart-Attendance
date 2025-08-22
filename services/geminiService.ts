@@ -1,13 +1,4 @@
-
 import { GoogleGenAI } from "@google/genai";
-
-const API_KEY = process.env.API_KEY;
-
-if (!API_KEY) {
-    throw new Error("API_KEY environment variable not set");
-}
-
-const ai = new GoogleGenAI({ apiKey: API_KEY });
 
 const cleanBase64 = (base64String: string): string => {
     return base64String.split(',')[1] || base64String;
@@ -17,6 +8,14 @@ export const compareFaces = async (
     imageBase64_1: string,
     imageBase64_2: string
 ): Promise<boolean> => {
+    const API_KEY = process.env.API_KEY;
+    
+    if (!API_KEY) {
+        throw new Error("API_KEY is not configured. Cannot perform face comparison.");
+    }
+
+    const ai = new GoogleGenAI({ apiKey: API_KEY });
+
     try {
         const imagePart1 = {
             inlineData: {

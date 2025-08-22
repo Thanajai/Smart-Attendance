@@ -160,8 +160,9 @@ const App: React.FC = () => {
                         break;
                     }
                 } catch (error) {
-                    console.error('Error comparing faces:', error);
-                    setStatus({ type: 'error', message: 'An API error occurred during verification.' });
+                    console.error('Error during face comparison:', error);
+                    const message = error instanceof Error ? error.message : 'An API error occurred during verification.';
+                    setStatus({ type: 'error', message });
                     return;
                 }
             }
