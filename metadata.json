@@ -1,0 +1,7 @@
+{
+  "name": "Smart Attendance System",
+  "description": "A smart attendance application that uses facial recognition powered by Gemini to allow users to register, check in, and check out. It logs attendance records and displays them in a clean interface.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
